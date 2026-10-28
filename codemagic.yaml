@@ -97,3 +97,84 @@ workflows:
           flutter build macos --release
     artifacts:
       - build/macos/Build/Products/Release/*.app
+
+  windows-workflow:
+    name: Windows Build
+    instance_type: windows_x2
+    environment:
+      vars:
+        FLUTTER_VERSION: "3.24.0"
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch:
+        include_patterns:
+          - main
+    scripts:
+      - name: Set up Flutter
+        script: |
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable %USERPROFILE%\flutter
+          set PATH=%PATH%;%USERPROFILE%\flutter\bin
+          flutter config --no-analytics
+          flutter pub get
+      - name: Build Windows
+        script: |
+          set PATH=%PATH%;%USERPROFILE%\flutter\bin
+          flutter build windows --release
+    artifacts:
+      - build/windows/runner/Release/
+
+  linux-workflow:
+    name: Linux Build
+    instance_type: linux_x2
+    environment:
+      vars:
+        FLUTTER_VERSION: "3.24.0"
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch:
+        include_patterns:
+          - main
+    scripts:
+      - name: Set up Flutter
+        script: |
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable $HOME/flutter
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter config --no-analytics
+          flutter pub get
+      - name: Build Linux
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter build linux --release
+    artifacts:
+      - build/linux/x64/release/bundle/
+
+  web-workflow:
+    name: Web Build
+    instance_type: linux_x2
+    environment:
+      vars:
+        FLUTTER_VERSION: "3.24.0"
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch:
+        include_patterns:
+          - main
+    scripts:
+      - name: Set up Flutter
+        script: |
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable $HOME/flutter
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter config --no-analytics
+          flutter pub get
+      - name: Build Web
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter build web --release
+    artifacts:
+      - build/web/
