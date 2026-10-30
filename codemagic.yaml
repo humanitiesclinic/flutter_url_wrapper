@@ -28,7 +28,7 @@ workflows:
     instance_type: linux_x2
     environment:
       flutter: 3.38.10
-      java: 11
+      java: 17
       ndk: default
       vars:
         BUNDLE_ID: "com.example.flutter_url_wrapper"
