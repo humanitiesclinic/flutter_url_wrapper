@@ -42,10 +42,10 @@ workflows:
     scripts:
       - name: Get dependencies
         script: flutter pub get
-      - name: Build Android APK
-        script: flutter build apk --release
+      - name: Build Android AAB
+        script: flutter build appbundle --release
     artifacts:
-      - build/app/outputs/apk/release/*.apk
+      - build/app/outputs/bundle/release/*.aab
     publishing:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
