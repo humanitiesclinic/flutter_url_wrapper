@@ -1,4 +1,4 @@
-package com.example.flutter_url_wrapper
+package com.humanitiesclinic.everythinginperspective
 
 import io.flutter.embedding.android.FlutterActivity
 
