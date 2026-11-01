@@ -47,11 +47,9 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Everything in Perspective'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      body: SafeArea(
+        child: WebViewWidget(controller: _webViewController),
       ),
-      body: WebViewWidget(controller: _webViewController),
     );
   }
 }
