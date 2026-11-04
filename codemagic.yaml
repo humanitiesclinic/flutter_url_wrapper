@@ -6,7 +6,7 @@ workflows:
       flutter: 3.38.10
       xcode: latest
       cocoapods: default
-    vars:
+      vars:
         BUNDLE_ID: "com.humanitiesclinic.everythinginperspective"
     triggering:
       events:
@@ -31,7 +31,7 @@ workflows:
       java: 17
       ndk: default
       vars:
-        BUNDLE_ID: "com.example.flutter_url_wrapper"
+        BUNDLE_ID: "com.humanitiesclinic.everythinginperspective"
     triggering:
       events:
         - push
