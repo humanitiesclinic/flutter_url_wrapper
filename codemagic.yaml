@@ -30,6 +30,11 @@ workflows:
       flutter: 3.38.10
       java: 17
       ndk: default
+      android_signing:
+        - keystore: $KEYSTORE_NAME
+          keystore_password: $KEYSTORE_PASSWORD
+          key_alias_password: $KEY_ALIAS_PASSWORD
+          key_alias: $KEY_ALIAS
       vars:
         BUNDLE_ID: "com.humanitiesclinic.everythinginperspective"
     triggering:
@@ -60,7 +65,7 @@ workflows:
       xcode: latest
       cocoapods: default
       vars:
-        BUNDLE_ID: "com.example.flutter_url_wrapper"
+        BUNDLE_ID: "com.humanitiesclinic.everythinginperspective"
     triggering:
       events:
         - push
